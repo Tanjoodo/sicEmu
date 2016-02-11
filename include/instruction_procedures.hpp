@@ -1,3 +1,5 @@
+#ifndef INSTRUCTION_PROCEDURES_HPP
+#define INSTRUCTION_PROCEDURES_HPP
 void procADD    (char operands[]);
 void procADDF   (char operands[]);
 void procADDR   (char operands[]);
@@ -56,3 +58,4 @@ void procTIO    (char operands[]);
 void procTIX    (char operands[]);
 void procTIXR   (char operands[]);
 void procWD     (char operands[]);
+#endif

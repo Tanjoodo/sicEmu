@@ -1,4 +1,6 @@
-enum Instruction
+#ifndef INSTRUCTION_HPP
+#define INSTRUCTION_HPP
+enum Instruction : unsigned char
 {
 	ADD    = 0x18, ADDF   = 0x58, ADDR = 0x90,
 	AND    = 0x40, CLEAR  = 0xB4, COMP = 0x28,
@@ -23,4 +25,4 @@ enum Instruction
 };
 
 Instruction PriviligedInstructions[] = {HIO, LPS, SIO, SSK, STI, STSW, TD, TIO, WD};
-
+#endif
