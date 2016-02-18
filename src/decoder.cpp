@@ -44,3 +44,33 @@ int InstructionLength(unsigned char bytes[])
 
 
 }
+
+Instruction Decode(unsigned char bytes[])
+{
+	// format 1 and 2, just return the first byte.
+	switch(bytes[0])
+	{
+		case FIX:
+		case FLOAT:
+		case HIO:
+		case NORM:
+		case SIO:
+		case TIO:
+		case ADDR:
+		case CLEAR:
+		case COMPR:
+		case DIVR:
+		case MULR:
+		case RMO:
+		case SHIFTL:
+		case SHIFTR:
+		case SUBR:
+		case SVC:
+		case TIXR:
+			return (Instruction)bytes[0];
+	 	
+	}
+
+	// format 2 and 4, zero out last two bits
+    return	(Instruction)(bytes[0] & 0b11111100);
+}
