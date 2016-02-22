@@ -1,0 +1,4 @@
+enum AddressingMode
+{
+	UnknownAM
+};
