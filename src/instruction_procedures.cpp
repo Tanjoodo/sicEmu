@@ -3,6 +3,7 @@
 
 #include "../include/instruction_procedures.hpp"
 #include "../include/addressing_mode.hpp"
+#include "../include/registers.hpp"
 
 void procADD(unsigned char operands[], AddressingMode addressing_mode)
 {
