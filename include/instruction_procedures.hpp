@@ -1,6 +1,8 @@
 #ifndef INSTRUCTION_PROCEDURES_HPP
 #define INSTRUCTION_PROCEDURES_HPP
 
+#include "addressing_mode.hpp"
+
 void procADD    (unsigned char * operands, AddressingMode addressing_mode);
 void procADDF   (unsigned char * operands, AddressingMode addressing_mode);
 void procADDR   (unsigned char * operands, AddressingMode addressing_mode);

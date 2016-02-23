@@ -7,7 +7,7 @@
 
 namespace reg
 {
-	extern int24 A, // 0
+	int24 A, // 0
 		   X,  // 1
 		   L,  // 2
 		   PC, // 8
