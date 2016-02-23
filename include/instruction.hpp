@@ -24,5 +24,5 @@ enum Instruction : unsigned char
 	WD     = 0xDC
 };
 
-Instruction PriviligedInstructions[] = {HIO, LPS, SIO, SSK, STI, STSW, TD, TIO, WD};
+//extern Instruction PriviligedInstructions[] = {HIO, LPS, SIO, SSK, STI, STSW, TD, TIO, WD};
 #endif
