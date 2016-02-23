@@ -18,6 +18,8 @@ enum AddressingMode
 	IndirectBase = 0b100100,      // (B) + disp
 	Immediate = 0b010000,         // disp
 	ImmediateExtended = 0b010001, // addr
+	ImmediatePlusPC = 0b010010,   // (PC) + disp
+	ImmediatePlusBase = 0b010100  // (B) + disp
 	
 	UnknownAM,
 };
