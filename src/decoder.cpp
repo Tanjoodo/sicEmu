@@ -46,7 +46,7 @@ int InstructionLength(unsigned char bytes[])
 
 }
 
-Instruction Decode(unsigned char bytes[])
+Instruction DecodeInstruction(unsigned char bytes[])
 {
 	// format 1 and 2, just return the first byte.
 	switch(bytes[0])
@@ -313,5 +313,4 @@ void Dispatch(Instruction instruction,
 			procWD(operands, addressing_mode);
 			break;
 	}
-
 }
