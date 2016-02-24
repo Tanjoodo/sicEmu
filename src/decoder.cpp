@@ -8,6 +8,16 @@ bool _getBit(unsigned char byte, int bit_number)
 	return byte & 1;
 }
 
+AddressingMode DecodeAddressingMode(unsigned char * bytes)
+{
+	if (InstructionLength(bytes) < 3)
+		return UnknownAM; // addressing modes are a format 3 and 4 feature.
+	unsigned char res = 0;
+	res |= (bytes[0] << 6);
+	res |= (bytes[1] >> 2);
+	return (AddressingMode)res;
+}
+
 int InstructionLength(unsigned char bytes[])
 {
 	switch (bytes[0])

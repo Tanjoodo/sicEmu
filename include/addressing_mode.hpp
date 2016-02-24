@@ -1,6 +1,7 @@
 #ifndef ADDRESSING_MODE_HPP
 #define ADDRESSING_MODE_HPP
-enum AddressingMode
+
+enum AddressingMode : unsigned char
 {
 	Direct = 0b110000,            // disp
 	ExtendedDirect = 0b110001,    // addr
@@ -19,7 +20,7 @@ enum AddressingMode
 	Immediate = 0b010000,         // disp
 	ImmediateExtended = 0b010001, // addr
 	ImmediatePlusPC = 0b010010,   // (PC) + disp
-	ImmediatePlusBase = 0b010100,  // (B) + disp
+	ImmediatePlusBase = 0b010100, // (B) + disp
 	
 	UnknownAM,
 };
