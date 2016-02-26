@@ -4,6 +4,14 @@
 #include "../include/instruction_procedures.hpp"
 #include "../include/addressing_mode.hpp"
 #include "../include/registers.hpp"
+#include "../include/memory.hpp"
+#include "../include/int24.hpp"
+
+unsigned char * _fetch_operand(unsigned char * operands, AddressingMode)
+{
+	// TODO
+	return 0;
+}
 
 void procADD(unsigned char * operands, AddressingMode addressing_mode)
 {
