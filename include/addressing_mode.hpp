@@ -4,7 +4,7 @@
 enum AddressingMode : unsigned char
 {
 	Direct = 0b110000,            // disp
-	ExtendedDirect = 0b110001,    // addr
+	DirectExtended = 0b110001,    // addr
 	RelativePC = 0b110010,        // (PC) + disp
 	RelativeBase = 0b110100,      // (B) + disp
 	Indexed = 0b111000,           // disp + (X)

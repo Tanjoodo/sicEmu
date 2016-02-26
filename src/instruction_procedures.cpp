@@ -7,9 +7,56 @@
 #include "../include/memory.hpp"
 #include "../include/int24.hpp"
 
-unsigned char * _fetch_operand(unsigned char * operands, AddressingMode)
+int _get_f3_disp(unsigned char * operands)
 {
-	// TODO
+	int result = 0;
+	result |= operands[1] << 6;
+	result |= operands[2] >> 2;
+
+	return result;	
+}
+
+int _get_f4_addr(unsigned char * operands)
+{
+	int result = 0;
+	result |= operands[1] << 4;
+	result |= operands[2] >> 4;
+
+	return result;
+
+}
+
+int _get_simple_addr(unsigned char * operands)
+{
+	int result = 0;
+	result |= operands[1] << 1;
+	return result;
+}
+unsigned char * _fetch_operand(unsigned char * operands, AddressingMode addressing_mode)
+{
+	switch (addressing_mode)
+	{
+	case Direct:
+		return &mem[_get_f3_disp(operands)];
+	case DirectExtended:
+		return &mem[_get_f4_addr(operands)];
+	case RelativePC:
+		return &mem[reg::PC + _get_f3_disp(operands)];
+	case RelativeBase:
+		return &mem[reg::B + _get_f3_disp(operands)];
+	case Indexed:
+		return &mem[reg::X + _get_f3_disp(operands)];
+	case IndexedExtended:
+		return &mem[reg::X + _get_f4_addr(operands)];
+	case IndexedPC:
+		return &mem[reg::PC + _get_f3_disp(operands) + reg::X];
+	case IndexedBase:
+		return &mem[reg::B + _get_f3_disp(operands) + reg::X];
+	case Simple:
+		return &mem[_get_simple_addr(operands)];
+	case SimpleIndexed:
+		return &mem[reg::X + _get_simple_addr(operands)];
+	}
 	return 0;
 }
 
