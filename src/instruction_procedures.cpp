@@ -7,6 +7,7 @@
 #include "../include/memory.hpp"
 #include "../include/int24.hpp"
 
+// Also use for Immediate
 int _get_f3_disp(unsigned char * operands)
 {
 	int result = 0;
@@ -16,6 +17,7 @@ int _get_f3_disp(unsigned char * operands)
 	return result;	
 }
 
+// Also use for ImmediateExtended
 int _get_f4_addr(unsigned char * operands)
 {
 	int result = 0;
@@ -32,6 +34,8 @@ int _get_simple_addr(unsigned char * operands)
 	result |= operands[1] << 1;
 	return result;
 }
+
+// Don't use with Immediate, ImmediateExtended, ImmediatePlusPC or ImmediatePlusBase
 unsigned char * _fetch_operand(unsigned char * operands, AddressingMode addressing_mode)
 {
 	switch (addressing_mode)
@@ -56,6 +60,14 @@ unsigned char * _fetch_operand(unsigned char * operands, AddressingMode addressi
 		return &mem[_get_simple_addr(operands)];
 	case SimpleIndexed:
 		return &mem[reg::X + _get_simple_addr(operands)];
+	case Indirect:
+		return &mem[mem[_get_f3_disp(operands)]];
+	case IndirectExtended:
+		return &mem[mem[_get_f4_addr(operands)]];
+	case IndirectPC:
+		return &mem[mem[_get_f3_disp(operands) + reg::PC]];
+	case IndirectBase:
+		return &mem[mem[_get_f3_disp(operands) + reg::B]];
 	}
 	return 0;
 }
