@@ -43,6 +43,7 @@ unsigned char mem[0x100000] = {};
 int main(int argc, char **argv)
 {
 	using namespace std;
+	cout << "hello?";
 	char *bytes;
 	int index = 0;
 	size_t size = 0;
@@ -59,9 +60,12 @@ int main(int argc, char **argv)
 		{
 			inFile.seekg(0, ios::end);
 			size = inFile.tellg();
+
 			inFile.seekg(0, ios::beg);
 
+			bytes = new char[size];
 			inFile.read(bytes, size);
+			std::copy(bytes, bytes + size, mem);
 
 		}
 		else
@@ -88,6 +92,8 @@ int main(int argc, char **argv)
 		Instruction instruction = DecodeInstruction(&mem[(int)reg::PC]);
 		if (instruction == WD)
 			break;
+		AddressingMode am = DecodeAddressingMode(&mem[(int)reg::PC]);
+		Dispatch(instruction, am, &mem[(int)reg::PC]);
 		int instruction_length = InstructionLength(&mem[(int)reg::PC]);
 		if (!reg::pc_changed)
 			reg::PC = int24((int)reg::PC + instruction_length);
