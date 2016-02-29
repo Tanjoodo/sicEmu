@@ -7,12 +7,14 @@ public:
 	int24(unsigned char low, unsigned char mid, unsigned char high);
 	int24(int n);
 
-	int24 operator=(int24&);
+	int24 operator=(int24);
 	int24 operator+(int24&);
 	int24 operator-(int24&);
 	int24 operator>>(int);
 	int24 operator<<(int);
 	operator int();
+
+	void store_into(unsigned char * loc);
 
 private:
 	unsigned char internals[3];

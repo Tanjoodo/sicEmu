@@ -7,6 +7,7 @@
 
 namespace reg
 {
+	bool pc_changed = false;
 	int24 A, // 0
 		   X,  // 1
 		   L,  // 2
@@ -19,6 +20,7 @@ namespace reg
 }
 
 unsigned char mem[0x100000] = {};
+
 
 int main()
 {
