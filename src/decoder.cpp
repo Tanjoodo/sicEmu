@@ -18,7 +18,7 @@ AddressingMode DecodeAddressingMode(unsigned char * bytes)
 	return (AddressingMode)res;
 }
 
-int InstructionLength(unsigned char bytes[])
+int InstructionLength(unsigned char * bytes)
 {
 	switch (bytes[0])
 	{

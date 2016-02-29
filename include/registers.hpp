@@ -15,21 +15,8 @@ namespace reg
 		   T,  // 5
 		   F;  // 6
 
-	void SetBit(int24 * reg, bool value, int bit_num)
-	{
-		if (value == true)
-		{
-			*reg = int24((int)reg::SW | (1 << bit_num));
-		}
-		else
-		{
-			*reg = int24((int)reg::SW & ~(1 << bit_num));
-		}
-	}
-
-	bool GetBit(int24 * reg, int bit_num)
-	{
-		return ((int)*reg >> bit_num) & 1 > 0;
-	}
+	void SetBit(int24 * reg, bool value, int bit_num);
+	
+	bool GetBit(int24 * reg, int bit_num);
 }
 #endif
