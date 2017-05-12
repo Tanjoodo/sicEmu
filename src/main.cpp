@@ -22,7 +22,7 @@ namespace reg
 
 	bool GetBit(int24 * reg, int bit_num)
 	{
-		return ((int)*reg >> bit_num) & 1 > 0;
+		return (((int)*reg >> bit_num) & 1) > 0;
 	}
 	void SetBit(int24 * reg, bool value, int bit_num)
 	{
@@ -43,9 +43,7 @@ unsigned char mem[0x100000] = {};
 int main(int argc, char **argv)
 {
 	using namespace std;
-	cout << "hello?";
 	char *bytes;
-	int index = 0;
 	size_t size = 0;
 	if (argc < 2)
 	{
@@ -73,9 +71,11 @@ int main(int argc, char **argv)
 			cout << "File input failed" << endl;
 		}
 	}
+
 	int t;
 	cout << "Enter number of locations you wish to change: ";
 	cin >> t;
+
 	while (t--)
 	{
 		int location;
@@ -85,8 +85,10 @@ int main(int argc, char **argv)
 		cin >> hex >> val;
 		mem[location] = val;
 	}
+
 	reg::PC = int24(0);
 	reg::pc_changed = false;
+
 	while (true)
 	{
 		Instruction instruction = DecodeInstruction(&mem[(int)reg::PC]);
@@ -100,6 +102,7 @@ int main(int argc, char **argv)
 		else
 			reg::pc_changed= false;
 	}
+
 	do
 	{
 		int location;
@@ -107,6 +110,6 @@ int main(int argc, char **argv)
 		cin >> hex >> location;
 		cin.ignore();
 		cout << "0x" << hex << (int)mem[location] << endl;
-	}while (true);
+	} while (true);
 	return 0;
 }

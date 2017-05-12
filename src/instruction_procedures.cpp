@@ -11,8 +11,8 @@
 int _get_f3_disp(unsigned char * operands)
 {
 	int result = 0;
-	result |= operands[1] << 6;
-	result |= operands[2] >> 2;
+	result |= operands[1] << 12;
+	result |= operands[2];
 
 	return result;	
 }
@@ -68,9 +68,11 @@ unsigned char * _fetch_operand(unsigned char * operands, AddressingMode addressi
 		return &mem[mem[_get_f3_disp(operands) + reg::PC]];
 	case IndirectBase:
 		return &mem[mem[_get_f3_disp(operands) + reg::B]];
+	default: 
+		return 0;
 	}
-	return 0;
 }
+
 int24 _get_final_operand(unsigned char * operands, AddressingMode addressing_mode)
 {
 	int24 operand;

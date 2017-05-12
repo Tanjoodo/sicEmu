@@ -15,3 +15,6 @@ instruction_procedures: int24
 
 int24:
 	$(CC) $(CFLAGS) -c src/int24.cpp -o int24.cpp -o int24.o
+
+clean:
+	rm *.o a.out
