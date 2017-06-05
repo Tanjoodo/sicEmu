@@ -21,7 +21,6 @@ enum AddressingMode : unsigned char
 	ImmediateExtended = 0b010001, // addr
 	ImmediatePlusPC = 0b010010,   // (PC) + disp
 	ImmediatePlusBase = 0b010100, // (B) + disp
-	
 	UnknownAM,
 };
 #endif

@@ -54,7 +54,7 @@ int24 int24::operator<<(int n)
 	return int24((int)*this << n);
 }
 
-void int24::store_into(unsigned char * loc)
+void int24::store_into(unsigned char *loc)
 {
 	loc[0] = internals[0];
 	loc[1] = internals[1];

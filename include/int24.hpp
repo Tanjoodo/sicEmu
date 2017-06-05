@@ -14,7 +14,7 @@ public:
 	int24 operator<<(int);
 	operator int();
 
-	void store_into(unsigned char * loc);
+	void store_into(unsigned char *loc);
 
 private:
 	unsigned char internals[3];

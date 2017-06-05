@@ -20,11 +20,12 @@ namespace reg
 		  T,  // 5
 		  F;  // 6
 
-	bool GetBit(int24 * reg, int bit_num)
+	bool GetBit(int24 *reg, int bit_num)
 	{
 		return (((int)*reg >> bit_num) & 1) > 0;
 	}
-	void SetBit(int24 * reg, bool value, int bit_num)
+
+	void SetBit(int24 *reg, bool value, int bit_num)
 	{
 		if (value == true)
 		{
@@ -111,5 +112,6 @@ int main(int argc, char **argv)
 		cin.ignore();
 		cout << "0x" << hex << (int)mem[location] << endl;
 	} while (true);
+
 	return 0;
 }
